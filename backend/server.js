@@ -1,4 +1,5 @@
 const express = require('express');
+const{ errorHandler } = require('./middleware/errorMiddleware');
 const colors = require('colors');
 const products = require('./data/products')
 const dotenv = require('dotenv');
@@ -18,6 +19,9 @@ app.get('/', (req,res) => {
 })
 
 app.use('/api',ProductRoutes)
+
+
+app.use(errorHandler)
 // app.get('/products', (req,res)=> {
 //     res.json(products);
 // })
